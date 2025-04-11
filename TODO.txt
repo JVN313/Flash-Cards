@@ -1,0 +1,6 @@
+Major:
+    create a UI 
+
+Minor:
+    create card classes
+    make the program continuous
