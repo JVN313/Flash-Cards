@@ -15,11 +15,12 @@ def ReviewCards():
     for i in Deck:
         print(i)
 
-
-if User_Prompt == "NEW":
-    CreateCard()
-elif User_Prompt == "VIEW":
-    ReviewCards()
-else:
-    print("Sorry Wrong input")
+def Main():
+    global User_Prompt
+    if User_Prompt == "NEW":
+        CreateCard()
+    elif User_Prompt == "VIEW":
+        ReviewCards()
+    else:
+        print("Sorry Wrong input")
 
