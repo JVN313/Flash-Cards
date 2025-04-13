@@ -3,4 +3,4 @@ Major:
 
 Minor:
     create card classes
-    make the program continuous
+    

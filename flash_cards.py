@@ -16,11 +16,20 @@ def ReviewCards():
         print(i)
 
 def Main():
-    global User_Prompt
-    if User_Prompt == "NEW":
-        CreateCard()
-    elif User_Prompt == "VIEW":
-        ReviewCards()
-    else:
-        print("Sorry Wrong input")
+    global User_Prompt, Running
+    while Running:
+        if User_Prompt == "NEW":
+            CreateCard()
+            User_Prompt = input("To create a new card type 'NEW' Or Review Your Deck type 'View'?\n").upper()
+        elif User_Prompt == "VIEW":
+            ReviewCards()
+            User_Prompt = input("To create a new card type 'NEW' Or Review Your Deck type 'View'?\n").upper()
+        elif User_Prompt == "EXIT":
+            print("NOW EXITING PROGRAM")
+            Running = False
+        else:
+            print("Sorry Wrong input")
+            User_Prompt = input("To create a new card type 'NEW' Or Review Your Deck type 'View'?\n").upper()
 
+
+Main()
