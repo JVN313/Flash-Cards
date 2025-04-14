@@ -1,6 +1,8 @@
 Major:
     create a UI 
+    create a translator
+    create a slideshow style view mode
 
 Minor:
     create card classes
-    
+    add functionality to view single sides of cards

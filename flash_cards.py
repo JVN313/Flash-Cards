@@ -1,6 +1,11 @@
 Deck = [("hat","gorro"),("dog","perro")]
-User_Prompt = input("To create a new card type 'NEW' Or Review Your Deck type 'View'?\n").upper()
 Running = True
+
+def User_Input():
+    User_Prompt = input("To create a new card type 'NEW' Or Review Your Deck type 'View'?\n").upper()
+    return User_Prompt
+
+User_Response = User_Input()
 
 def CreateCard():
     global Deck
@@ -16,20 +21,20 @@ def ReviewCards():
         print(i)
 
 def Main():
-    global User_Prompt, Running
+    global User_Response, Running
     while Running:
-        if User_Prompt == "NEW":
+        if User_Response == "NEW":
             CreateCard()
-            User_Prompt = input("To create a new card type 'NEW' Or Review Your Deck type 'View'?\n").upper()
-        elif User_Prompt == "VIEW":
+            User_Response = User_Input()
+        elif User_Response == "VIEW":
             ReviewCards()
-            User_Prompt = input("To create a new card type 'NEW' Or Review Your Deck type 'View'?\n").upper()
-        elif User_Prompt == "EXIT":
+            User_Response = User_Input()
+        elif User_Response == "EXIT":
             print("NOW EXITING PROGRAM")
             Running = False
         else:
             print("Sorry Wrong input")
-            User_Prompt = input("To create a new card type 'NEW' Or Review Your Deck type 'View'?\n").upper()
+            User_Response = User_Input()
 
 
 Main()
