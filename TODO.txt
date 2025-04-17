@@ -6,3 +6,4 @@ Major:
 Minor:
     create card classes
     add functionality to view single sides of cards
+    change the Deck varrible into and Dictionary and update the code accordingly
