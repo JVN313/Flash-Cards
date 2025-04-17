@@ -1,4 +1,8 @@
-Deck = [("hat","gorro"),("dog","perro")]
+Deck = {
+    "DOG": "PERRO",
+    "HAT": "GORRO"
+}
+
 Running = True
 
 def User_Input():
@@ -12,16 +16,23 @@ def CreateCard():
     front = str(input("Type Front Word of the Card\n").upper())
     back = str(input("Type Back Word of the Card\n").upper())
     new_card = (front,back)
-    Deck.append(new_card)
+    Deck.update({front: back})
     print(f"New Card {new_card} Added!")
 
 def ReviewCards():
     global Deck
     for i in Deck:
-        print(i)
+        print(f"{i}:{Deck.get(i)}")
+
+def RemoveCard(card,deck):
+    if card in deck:
+        print(f"Card: ({card},{deck.get(card)}) Removed!\n")
+        deck.pop(card)
+    else:
+        print("Sorry the card entered is not in the deck")
 
 def Main():
-    global User_Response, Running
+    global User_Response, Running, Deck
     while Running:
         if User_Response == "NEW":
             CreateCard()
@@ -32,6 +43,10 @@ def Main():
         elif User_Response == "EXIT":
             print("NOW EXITING PROGRAM")
             Running = False
+        elif User_Response == "REMOVE":
+            remove_input = input("Enter The Front Word Of THe Card You Wish To Remove.   ").upper()
+            RemoveCard(remove_input,Deck)
+            User_Response = User_Input()
         else:
             print("Sorry Wrong input")
             User_Response = User_Input()
