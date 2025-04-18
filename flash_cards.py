@@ -6,7 +6,7 @@ Deck = {
 Running = True
 
 def User_Input():
-    User_Prompt = input("To create a new card type 'NEW' Or Review Your Deck type 'View'?\n").upper()
+    User_Prompt = input("To create a new card type 'NEW' / Review Your Deck type 'View'/ Remove a card type 'REMOVE' / To exit program type 'Exit'\n").upper()
     return User_Prompt
 
 User_Response = User_Input()

@@ -6,4 +6,4 @@ Major:
 Minor:
     create card classes
     add functionality to view single sides of cards
-    update the input prompts to include the new 'Remove' and 'Exit' features
+   
