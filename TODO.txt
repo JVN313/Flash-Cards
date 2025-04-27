@@ -2,7 +2,7 @@ Major:
     create a UI 
     create a translator
     create a slideshow style view mode
-    create a note taking mode/finish note mode
+    create a note taking mode/finish the EditFile function
 
 Minor:
     create card classes
