@@ -3,10 +3,10 @@ Major:
     create a translator
     create a slideshow style view mode
     edit the note taking mode to change certain text in file
-    create functionality to create and delete notes and decks
+    create functionality to delete and create decks(by updating the Deck varible to Decks to include multiple dictionaries)
 
 Minor:
     create card classes
     add functionality to view single sides of cards
-    fully intergrate the note taking mode in flash_cards.py
+    format the User_Response varible to show the user all of their options
     

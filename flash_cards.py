@@ -1,4 +1,4 @@
-import glob
+import glob, os
 
 Deck = {
     "DOG": "PERRO",
@@ -19,7 +19,7 @@ def CreateCard():
     back = str(input("Type Back Word of the Card\n").upper())
     new_card = (front,back)
     Deck.update({front: back})
-    print(f"New Card {new_card} Added!")
+    print(f"New Card {new_card} Added!\n")
 
 def ReviewCards():
     global Deck
@@ -68,6 +68,7 @@ def EditFiles(file_name):
             file_append = input("Enter What You Wish To add To THe file:\n")
             file_edit.write(f"\n{file_append}")
             file_edit.close()
+            print("Edits Added!\n")
             working= False
         elif file_choice == "r":
             file_edit = open(f"{file_name}","r")
@@ -76,6 +77,14 @@ def EditFiles(file_name):
             working= False
         else:
             print("Sorry Incorrect Input!\n")
+
+def RemoveFile(file_name):
+    file_name = file_name.upper()
+    if os.path.exists(f"{file_name}.txt"):
+        os.remove(f"{file_name}.txt")
+        print(f"{file_name} Removed!\n")
+    else:
+        print("The file does not exist\n")
 
 def Main():
     global User_Response, Running, Deck
@@ -92,6 +101,20 @@ def Main():
         elif User_Response == "REMOVE":
             remove_input = input("Enter The Front Word Of THe Card You Wish To Remove.   ").upper()
             RemoveCard(remove_input,Deck)
+            User_Response = User_Input()
+        elif User_Response == "NEW NOTE":
+            CreatePage()
+            User_Response = User_Input()
+        elif User_Response == "VIEW NOTES":
+            ListNotes()
+            User_Response = User_Input()
+        elif User_Response == "EDIT":
+            file = input("Enter File Name:  ").upper()
+            EditFiles(file)
+            User_Response = User_Input()
+        elif User_Response == "DELETE NOTE":
+            file = input("Enter File Name:  ").upper()
+            RemoveFile(file)
             User_Response = User_Input()
         else:
             print("Sorry Wrong input")
