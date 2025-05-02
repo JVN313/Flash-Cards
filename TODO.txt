@@ -2,9 +2,11 @@ Major:
     create a UI 
     create a translator
     create a slideshow style view mode
-    create a note taking mode/finish note taking mode
+    edit the note taking mode to change certain text in file
+    create functionality to delete and create decks(by updating the Deck varible to Decks to include multiple dictionaries)
 
 Minor:
     create card classes
     add functionality to view single sides of cards
+    format the User_Response varible to show the user all of their options
     
