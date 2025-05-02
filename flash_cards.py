@@ -48,7 +48,6 @@ def EditFiles(file_name):
     file_name = str(file_name) + ".txt"
     file_edit = ""
     file_choice = ""
-    file_read = "r"
     file_append = "a"
     working = True
     
@@ -102,6 +101,7 @@ def Main():
             remove_input = input("Enter The Front Word Of THe Card You Wish To Remove.   ").upper()
             RemoveCard(remove_input,Deck)
             User_Response = User_Input()
+            #BEGINNING OF NOTETAKING OPTIONS
         elif User_Response == "NEW NOTE":
             CreatePage()
             User_Response = User_Input()
