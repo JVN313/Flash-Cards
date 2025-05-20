@@ -105,11 +105,13 @@ def RemoveFile(file_name):
 def Main():#START FORMATING LINES WITH *
     global User_Response, Running, Decks
     while Running:
-        if User_Response == "NEW":#*
-            CreateCard()
+        if User_Response == "NEW":
+            deck_select = input("Enter Name Of Deck To Add Card:\n").upper()
+            Decks[deck_select].update(CreateCard())
             User_Response = User_Input()
-        elif User_Response == "VIEW":#*
-            ReviewCards()
+        elif User_Response == "VIEW":
+            deck_select = input("Enter Name Of Deck To Add Card:\n").upper()
+            ReviewCards(deck_select)
             User_Response = User_Input()
         elif User_Response == "EXIT":
             print("NOW EXITING PROGRAM")
@@ -121,9 +123,10 @@ def Main():#START FORMATING LINES WITH *
             delete_deck = input("Enter Name of Deck To Delete:  ").upper()
             DeleteDeck(delete_deck)
             User_Response = User_Input()
-        elif User_Response == "REMOVE":#*
+        elif User_Response == "REMOVE":
+            deck_select = input("Enter Name Of Deck To Add Card:\n").upper()
             remove_input = input("Enter The Front Word Of THe Card You Wish To Remove.   ").upper()
-            RemoveCard(remove_input,Decks)
+            RemoveCard(remove_input,deck_select)
             User_Response = User_Input()
             #BEGINNING OF NOTETAKING OPTIONS
         elif User_Response == "NEW NOTE":
