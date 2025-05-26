@@ -4,6 +4,7 @@ Major:
     create a slideshow style view mode
     edit the note taking mode to change certain text in file
     create functionality to delete and create decks(by updating the Deck varible to Decks to include multiple dictionaries)
+    create a randomizer to see cards out of order.
 
 Minor:
     create card classes
