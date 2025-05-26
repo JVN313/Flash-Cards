@@ -1,9 +1,8 @@
 import glob, os
 
-Deck = {
-    "DOG": "PERRO",
-    "HAT": "GORRO"
-}
+Decks = {"SPANISH":{"Hello":"Hola", "Cat":"Gato", "Dog":"Perro"},
+         "DUTCH":{"Hello":"Hallo", "Car":"Auto", "Home":"Thuis"},
+         "FRENCH":{"Yes": "Oui", "Want": "Veux", "Who":"Qui"}}
 
 Running = True
 
@@ -13,25 +12,43 @@ def User_Input():
 
 User_Response = User_Input()
 
-def CreateCard():
-    global Deck
+def CreateDeck():
+    global Decks
+    working = True
+    while working:
+        deck_name = str(input("Enter Name Of New Deck:   ").upper())
+        if deck_name not in Decks:
+            Decks.update({deck_name:{}})
+            working = False
+        else:
+            print("Deck Name Already Exists!")
+
+def DeleteDeck(deck):
+    global Decks
+    if deck in Decks:
+        del Decks[deck]
+    else:
+        print("Deck does not exist\n")
+
+def CreateCard():#THE DECK TO ADD THE CARD MUST BE SELECTED FIRST
     front = str(input("Type Front Word of the Card\n").upper())
     back = str(input("Type Back Word of the Card\n").upper())
     new_card = (front,back)
-    Deck.update({front: back})
     print(f"New Card {new_card} Added!\n")
+    return {front:back}
 
-def ReviewCards():
-    global Deck
-    for i in Deck:
-        print(f"{i}:{Deck.get(i)}")
+def ReviewCards(deck):#DECK NAME MUST BE IN CAPS
+    global Decks
+    for i in Decks[deck]:
+        print(f"{i}:{Decks[deck].get(i)}")
 
 def RemoveCard(card,deck):
-    if card in deck:
-        print(f"Card: ({card},{deck.get(card)}) Removed!\n")
-        deck.pop(card)
+    global Decks
+    if deck in Decks and card in Decks[deck]:
+        print(f"Card: ({card},{Decks[deck].get(card)}) Removed!\n")
+        Decks[deck].pop(card)
     else:
-        print("Sorry the card entered is not in the deck")
+        print("Sorry the card entered is not in the deck, or Deck does not exist\n")
 #Start of note taking mode
 def CreatePage():
     page_title = input("Enter Name Of New Note Page:  ").upper()
@@ -48,7 +65,6 @@ def EditFiles(file_name):
     file_name = str(file_name) + ".txt"
     file_edit = ""
     file_choice = ""
-    file_read = "r"
     file_append = "a"
     working = True
     
@@ -86,22 +102,33 @@ def RemoveFile(file_name):
     else:
         print("The file does not exist\n")
 
-def Main():
-    global User_Response, Running, Deck
+def Main():#START FORMATING LINES WITH *
+    global User_Response, Running, Decks
     while Running:
         if User_Response == "NEW":
-            CreateCard()
+            deck_select = input("Enter Name Of Deck To Add Card:\n").upper()
+            Decks[deck_select].update(CreateCard())
             User_Response = User_Input()
         elif User_Response == "VIEW":
-            ReviewCards()
+            deck_select = input("Enter Name Of Deck To Add Card:\n").upper()
+            ReviewCards(deck_select)
             User_Response = User_Input()
         elif User_Response == "EXIT":
             print("NOW EXITING PROGRAM")
             Running = False
-        elif User_Response == "REMOVE":
-            remove_input = input("Enter The Front Word Of THe Card You Wish To Remove.   ").upper()
-            RemoveCard(remove_input,Deck)
+        elif User_Response == "CREATE DECK":
+            CreateDeck()
             User_Response = User_Input()
+        elif User_Response == "DELETE DECK":
+            delete_deck = input("Enter Name of Deck To Delete:  ").upper()
+            DeleteDeck(delete_deck)
+            User_Response = User_Input()
+        elif User_Response == "REMOVE":
+            deck_select = input("Enter Name Of Deck To Add Card:\n").upper()
+            remove_input = input("Enter The Front Word Of THe Card You Wish To Remove.   ").upper()
+            RemoveCard(remove_input,deck_select)
+            User_Response = User_Input()
+            #BEGINNING OF NOTETAKING OPTIONS
         elif User_Response == "NEW NOTE":
             CreatePage()
             User_Response = User_Input()
